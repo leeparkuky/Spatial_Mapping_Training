@@ -4,6 +4,7 @@
 We have one hour check-in on Monday and Thursday.   
 On Monday, we discuss the progress and I give you some coding demo (highlighted part in the objectives)
 On Thursday, I give you a coding problems just to check if you achived weekly objectives.
+We have a break week (Oct 3 - 9).
 Use MS Teams for communication.
 
 
@@ -33,7 +34,7 @@ Use MS Teams for communication.
 2. `lambda function in python` + pd.DataFrame.apply with a lambda function
 3. **`requests`** in python
 
-### Week 3
+### Week 3 (Oct 10 - 16)
 1. Getting familiar with pandas II
    * **regex in pandas (pd.Series.str) : String Manipulation**
    * merge/join/concatenate
@@ -53,7 +54,7 @@ Use MS Teams for communication.
 2. **`BeautifulSoup` and `Selenium`** in Python 
 3. Getting familiar with JS (yes.. Java Script)
 
-### Week 5 (Oct 17 -23)
+### Week 5 (Oct 24 -30)
 1. **`Spatial Data Visualization`**
    * feature class, feature layer, and map
    * renderer
@@ -81,3 +82,8 @@ Use MS Teams for communication.
    * [arcpy](https://pro.arcgis.com/en/pro-app/2.8/arcpy/get-started/what-is-arcpy-.htm)
 3. JavaScript
    * [JavaScript @ W3Schools](https://www.w3schools.com/js/)
+
+## What's next after the 5 weeks training
+1. Be a contributor to [CIFTools](https://github.com/CIOData/CIFTools/)
+2. Be a administrator of [KYInFocus](https://cancerinfocus.uky.edu/)
+3. Be a consultant to other cancer center CIOs considering to build their own automated mapping system
