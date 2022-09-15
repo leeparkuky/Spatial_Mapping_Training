@@ -1,18 +1,26 @@
 # Python Tutorial in 5 weeks for MCC Data Mapping Project
 
+## Structure
+We have one hour check-in on Monday and Thursday.   
+On Monday, we discuss the progress and I give you some coding demo (highlighted part in the objectives)
+On Thursday, I give you a coding problems just to check if you achived weekly objectives.
+Use MS Teams for communication.
+
+
+
 ## Objectives
 
 ### Week 1 (Sep 19-25)
-1. **Getting familiar with python**
+1. **Getting familiar with python** (2hrs)
    * data types : boolean, integer, float, string, list, dictionary, tuple, set
    * functions
    * Object Oriented Programming (OOP) basics
    * regex in python basics
    * try, except, finally
-3. **list and dict comprehensions**
-4. **Getting familiar with HTML**
+3. **list and dict comprehensions** (30 mins)
+4. **Getting familiar with HTML** 
 5. Using **git** 
-   * basics : git clone, git pull, git commit, git add, git push
+   * `basics` : git clone, git pull, git commit, git add, git push
    * optional : git branch, git checkout, git merge
 
 ### Week 2
@@ -23,7 +31,7 @@
    * **apply**
    * **drop** columns or rows (esp when you see null values)
 2. lambda function in python + pd.DataFrame.apply with a lambda function
-3. **requests** in python
+3. `**requests** in python`
 
 ### Week 3
 1. Getting familiar with pandas II
