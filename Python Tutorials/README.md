@@ -63,6 +63,7 @@
    * Pandas: Python for Data Analysis (Wes McKinney)
    * [requests](https://www.w3schools.com/python/module_requests.asp)
    * [regex and re in python](https://www.w3schools.com/python/python_regex.asp)
+   * [pandas API documentation](https://pandas.pydata.org/docs/reference/index.html)
    * [OOP](https://www.w3schools.com/python/python_classes.asp)
    * [BeautifulSoup](https://beautiful-soup-4.readthedocs.io/en/latest/)
    * [Selenium](https://selenium-python.readthedocs.io/)
