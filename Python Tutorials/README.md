@@ -30,21 +30,22 @@ Use MS Teams for communication.
    * **(conditional) indexing, selection, and filtering DF (loc, iloc)**
    * **apply**
    * **drop** columns or rows (esp when you see null values)
-2. lambda function in python + pd.DataFrame.apply with a lambda function
-3. `**requests** in python`
+2. `lambda function in python` + pd.DataFrame.apply with a lambda function
+3. **`requests`** in python
 
 ### Week 3
 1. Getting familiar with pandas II
    * **regex in pandas (pd.Series.str) : String Manipulation**
    * merge/join/concatenate
    * reshaping and pivoting
-2. Spatial Data Types (**shp**, GeoJSON, geodatabase)
+2. `Spatial Data Types` (**shp**, GeoJSON, geodatabase)
    * Longitude, Latitude
    * Polygon
    * TIGER/LINE
 4. Pandas with spatial data (**geopandas**)
+   * Importing shp into a geodataframe
 
-### Week 4
+### Week 4 (we may discuss what I may need to demo)
 1. **Understanding ArcGIS ecosystem**
    * ArcPy and ArcGIS Pro
    * ArcGIS Server
@@ -53,7 +54,7 @@ Use MS Teams for communication.
 3. Getting familiar with JS (yes.. Java Script)
 
 ### Week 5 (Oct 17 -23)
-1. **Spatial Data Visualization**
+1. **`Spatial Data Visualization`**
    * feature class, feature layer, and map
    * renderer
    * rgb and hex color
