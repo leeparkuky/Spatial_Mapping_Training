@@ -4,7 +4,7 @@
 
 ### Week 1
 1. **Getting familiar with python**
-  * data types : boolean, integer, float, string, list, dictionary, tuple, set
+   * data types : boolean, integer, float, string, list, dictionary, tuple, set
   * functions
   * Object Oriented Programming (OOP) basics
   * regex in python basics
