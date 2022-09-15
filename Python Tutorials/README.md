@@ -1,8 +1,8 @@
-# Python Tutorial in 4 weeks for MCC Data Mapping Project
+# Python Tutorial in 5 weeks for MCC Data Mapping Project
 
 ## Objectives
 
-### Week 1
+### Week 1 (Sep 19-25)
 1. **Getting familiar with python**
    * data types : boolean, integer, float, string, list, dictionary, tuple, set
    * functions
@@ -44,7 +44,7 @@
 2. **`BeautifulSoup` and `Selenium`** in Python 
 3. Getting familiar with JS (yes.. Java Script)
 
-### Week 5
+### Week 5 (Oct 17 -23)
 1. **Spatial Data Visualization**
    * feature class, feature layer, and map
    * renderer
