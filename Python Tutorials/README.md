@@ -1,9 +1,9 @@
 # Python Tutorial in 5 weeks for MCC Data Mapping Project
 
 ## Structure
-We have one hour check-in on Monday and Thursday.   
+We have one hour check-in on Monday (10:15 - 10:45 upto 11:15 RM 333) and Friday (10-10:30).   
 On Monday, we discuss the progress and I give you some coding demo (highlighted part in the objectives)
-On Thursday, I give you a coding problems just to check if you achived weekly objectives.
+On Friday, I give you a coding problems just to check if you achived weekly objectives.
 We have a break week (Oct 3 - 9).
 Use MS Teams for communication.
 
