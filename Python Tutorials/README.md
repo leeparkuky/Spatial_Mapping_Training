@@ -22,12 +22,12 @@ Use MS Teams for communication.
    * for-loops, while-loops, map
       * try **lab 2** of STA605 in python
    * Object Oriented Programming (OOP) BASICS
-      * read the following pages in order [link1]("https://www.w3schools.com/python/python_classes.asp")
+      * read the following pages in order [link1](https://www.w3schools.com/python/python_classes.asp)
       * Remember: **everything in python is an object**.
    * `regex` in python basics
    * try, except, finally
 3. **list and dict comprehensions** (30 mins)
-   * read the following pages in order [link1]("https://www.w3schools.com/python/python_lists_comprehension.asp") [link2]("https://www.programiz.com/python-programming/dictionary-comprehension") [link3]("https://www.geeksforgeeks.org/python-map-vs-list-comprehension/")
+   * read the following pages in order [link1](https://www.w3schools.com/python/python_lists_comprehension.asp) $\rightarrow$ [link2](https://www.programiz.com/python-programming/dictionary-comprehension) $\rightarrow$ [link3](https://www.geeksforgeeks.org/python-map-vs-list-comprehension/)
 4. **Getting familiar with HTML** 
 5. Using **git** 
    * `basics` : git clone, git pull, git commit, git add, git push
