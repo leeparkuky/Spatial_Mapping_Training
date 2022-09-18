@@ -18,10 +18,11 @@ Use MS Teams for communication.
       * basic property of each data type: is tuple immutable?
       * finding an index of an item in a list
       * get items and keys in a dictionary as a list or iterable object
+      * and others (optional but strongly recommended: read chapter 3 of McKinney's book)
    * functions
    * for-loops, while-loops, map
       * try **lab 2** of STA605 in python
-   * Object Oriented Programming (OOP) BASICS
+   * Object Oriented Programming (OOP) **BASICS** (we may discuss further on this topic later)
       * read the following pages in order [link1](https://www.w3schools.com/python/python_classes.asp)
       * Remember: **everything in python is an object**.
    * `regex` in python basics
