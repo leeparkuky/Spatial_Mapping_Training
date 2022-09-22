@@ -42,6 +42,7 @@ Use MS Teams for communication.
    * **apply**
    * **drop** columns or rows (esp when you see null values)
 2. `lambda function in python` + pd.DataFrame.apply with a lambda function
+3. Watch a video series on OOP in python: [link](https://www.youtube.com/playlist?list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc)
 3. **`requests`** in python
 
 ### Week 3 (Oct 10 - 16)
