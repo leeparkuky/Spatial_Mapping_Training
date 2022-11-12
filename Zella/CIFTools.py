@@ -1312,7 +1312,7 @@ class facilities:
                 print(file_path)
                 df = pd.read_csv(file_path)
                 print('reading data is complete')
-                df.columns = ['Name','Street','City','State','Zip_code','Phone','Designation','Registry Participant']
+                df.columns = ['Name','Street','City','State','Zip_code','Phone','Designation','site_id','facility_id','Registry Participant']
                 df['Address'] = df['Street'] + ', ' + df['City'] + ', ' +  df['State'] + ' ' + df['Zip_code']
                 df['Type'] = 'Lung Cancer Screening'
                 df['Phone_number'] = df['Phone']
@@ -1349,14 +1349,20 @@ class BLS:
         df['County'] = df.County.str.strip().astype(str)
         df['County'] = ['0'+x if len(x) < 3 else x for x in df.County]
         df['County'] = ['0'+x if len(x) < 3 else x for x in df.County]
-        df['Employed'] = df.Employed.str.strip().str.replace(',','').astype(float)
-        df['Unemployed'] = df.Unemployed.str.strip().str.replace(',','').astype(float)
-        df['Unemployment Rate'] = df['Unemployment Rate'].str.strip().str.replace(',','').astype(float)
+        # df['Employed'] = df.Employed.str.strip().str.replace(',','').astype(float)
+        df['Employed'] = df.Employed.replace(r'-', np.NaN, regex=True).replace(',','', regex=True).astype(float) # ZELLA CHANGE: replaced this line
+        df['Unemployed'] = df.Unemployed.replace(r'-', np.NaN, regex=True).replace(',','', regex=True).astype(float)
+        df['Unemployment Rate'] = df['Unemployment Rate'].replace(r'-', np.NaN, regex=True).replace(',','', regex=True).astype(float)
         df['FIPS'] = df['State']+df['County']
         df['Period'] = df.Period.str.strip()
         if most_recent:
-            df = df.loc[df.Period.str.match(re.compile('.*p\)$'))]
-            df['Period'] = [x[:-3] for x in df.Period]
+            # df = df.loc[df.Period.str.match(re.compile('.*p\)$'))] # ISSUE: GIVING AN ERROR
+            # ## ERROR: ValueError: Cannot mask with non-boolean array containing NA / NaN values
+            # df['Period'] = [x[:-3] for x in df.Period]
+            #### ZELLA CHANGE (commented-out lines were giving errors) ####
+            df = df.loc[df.Period.str.match(re.compile(r'.*p\)$'), na = False)]
+            df['Period'] = [x[:-3] for x in df.Period if type(x) == str]
+            #### END ZELLA CHANGE ####
         self.df = df.loc[df.State.eq(state),['FIPS','Unemployment Rate', 'Period']].sort_values('FIPS').reset_index(drop = True)
 
 ##############################################################################
@@ -1437,7 +1443,9 @@ class fcc:
         from selenium.webdriver.common.by import By
 
         if chrome_driver_path == None:
-            chrome_driver_path = os.getcwd() + '/chromedriver'
+            chrome_driver_path = os.getcwd() + '\\chromedriver'
+            if sys.platform.lower()[:3] == 'win':
+            	chrome_driver_path += '.exe'
         try:
             driver = webdriver.Chrome(chrome_driver_path)
             driver.close()
@@ -1477,7 +1485,7 @@ class fcc:
                 print(file_path)
 
     def gen_df(self):
-        file_path = self.file_path
+        file_path = self.file_path # ZELLA NOTE: AttributeError: 'fcc' object has no attribute 'file_path'
         with ZipFile(file_path) as my_zip_file:
             df = pd.read_csv(my_zip_file.open(my_zip_file.namelist()[0]))
             df = df[['StateAbbr','BlockCode','MaxAdDown','MaxAdUp']]

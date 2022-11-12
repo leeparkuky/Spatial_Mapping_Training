@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
     """
     Example of parser:
-    python3 CIF_pull_data.py --input_folder ./input_folder --ca_name Dartmouth  
+    python3 CIF_pull_data.py --input_folder ./input_folder --ca_name Dartmouth
     """
 
     args, _ = parser.parse_known_args()
@@ -61,7 +61,10 @@ if __name__ == '__main__':
         input_path = args.input_folder
         # find a csv file in the input_folder
         ca_file = glob.glob(os.path.join(input_path, f'*.{args.ca_file_type}'))[0]
-        drive_file = glob.glob(os.path.join(input_path, 'chromedriver'), recursive = True)[0]
+        chromedriver_name = 'chromedriver'
+        if sys.platform.lower()[:3] == 'win':
+        	chromedriver_name += '.exe'
+        drive_file = glob.glob(os.path.join(input_path, chromedriver_name), recursive = True)[0]
         print(f'google chrome driver and the catchment area counties file should be in {input_path}')
         print(f"file path of catchment are file is : {ca_file}")
         print(f"chrome drive file is locaed in : {drive_file}")
@@ -418,11 +421,13 @@ if __name__ == '__main__':
         # broadband speeds
         print('Collecting broadband data...')
         fcc_data = pd.DataFrame()
-
+        print(dl_path) # ZELLA NOTE: for testing only
         for s in caSA:
-            if drive_file:
+            try:
+            # if drive_file: # ZELLA NOTE: throwing an error: NameError: name 'drive_file' is not defined
                 FCC = fcc(state=s, download_path = dl_path, chrome_driver_path = drive_file)
-            else:
+            except NameError:
+            # else:
                 FCC = fcc(state=s, download_path = dl_path)
             fcc_data = pd.concat([fcc_data, FCC.fcc_data], ignore_index=True)
             del FCC
@@ -576,19 +581,19 @@ if __name__ == '__main__':
         env_tract = env_tract[['FIPS','County','State','LILA_Tracts_Vehicle']]
         point_df = gen_location_data()
 
-        cdata = {'Screening & Risk Factors (County)': rfs_county, 
-                'Screening & Risk Factors (Tract)': rfs_tract, 
+        cdata = {'Screening & Risk Factors (County)': rfs_county,
+                'Screening & Risk Factors (Tract)': rfs_tract,
                 'Cancer Incidence - Age Adj.': cancer_inc,
-                'Cancer Mortality - Age Adj.': cancer_mor, 
-                'Economic Indicators (County)': econ_county, 
-                'Economic INdicators (Tract)': econ_tract, 
-                'Housing & Transportation (County)': ht_county, 
-                'Housing & Transportation (Tract)': ht_tract, 
+                'Cancer Mortality - Age Adj.': cancer_mor,
+                'Economic Indicators (County)': econ_county,
+                'Economic INdicators (Tract)': econ_tract,
+                'Housing & Transportation (County)': ht_county,
+                'Housing & Transportation (Tract)': ht_tract,
                 'Sociodemographics (County)': sociodemo_county,
-                'Sociodemographics (Tract)': sociodemo_tract, 
+                'Sociodemographics (Tract)': sociodemo_tract,
                 'Environment (County)': env_county,
-                'Environment (Tract)': env_tract, 
-                'Broadband Speed': broadband_data, 
+                'Environment (Tract)': env_tract,
+                'Broadband Speed': broadband_data,
                 'Facilities and Providers': point_df}
 
         with open(os.path.join(path2,'dataset.pickle'), 'wb') as dataset:
