@@ -12,11 +12,11 @@ import arcgis
 from arcgis.gis import GIS, ContentManager
 from arcgis.mapping import WebMap
 from arcgis.geocoding import batch_geocode, get_geocoders
-import geopandas as gpd
-import pandas as pd
+
+
 import warnings
 import time
-import json
+
 import argparse
 
 
@@ -332,12 +332,12 @@ class sDataFrame():
                 
 #######################################################################################################################                
                 
-                
-                
+                             
 class CIFTool_AGOL(sDataFrame):
-    def __init__(self, gis_address, client_id, folder_name = None):
+    def __init__(self, gis_address, user_name, password, folder_name = None):
         self.gis_address = gis_address
-        self.client_id = client_id
+        self.user_name = user_name
+        self.password = password
         self._contentManager = None
         super().__init__()
         self.layers = {}
@@ -470,8 +470,12 @@ class CIFTool_AGOL(sDataFrame):
                 lyr.popupInfo.title = title
             else:
                 raise ValueError("title must be a string")
-                
+
             main_fields = [f.label for f in lyr.popupInfo.fieldInfos if f.fieldName != f.label]
+            try:
+                main_fields.remove("Fips")
+            except:
+                pass
             for field in lyr.popupInfo.fieldInfos:
                 if field.label.islower():
                     field.label = field.label.title()
@@ -481,13 +485,12 @@ class CIFTool_AGOL(sDataFrame):
                     labels_to_include = ['Tract','County','State'] + main_fields
                 else:
                     raise ValueError('level must be either "county" or "tract"')
-                    
-                if field.label in ['County','State'] + main_fields:
+
+                if field.label in labels_to_include:
                     field.visible = True
                 else:
                     field.visible = False
-        return wm 
-    
+        return wm    
     
     
     def genWebMapFromGroupLayers(self, level= 'county'):
@@ -519,8 +522,9 @@ class CIFTool_AGOL(sDataFrame):
             lyr = GL.layers[0]
             properties = lyr.properties
             original_colname = fl_dict['alias']
-            sdf_colname = fl_dict['fields']
-            colname_dict = dict(zip(original_colname, sdf_colname))
+            AGOLNames = fl_dict['fields']
+            sdf_colname = [x.name for x in properties.fields]
+            colname_dict = dict(zip(original_colname, AGOLNames))
 
             for colname in fl_dict['alias']:
                 AGOLName = colname_dict[colname]
@@ -598,7 +602,7 @@ class CIFTool_AGOL(sDataFrame):
                 
         for i in trange(len(map_ids), leave = False, desc = "sharing webmaps"):
             map_id = map_ids[i]
-            wm = cif._contentManager.search(map_id)[0]
+            wm = self._contentManager.search(map_id)[0]
             time.sleep(.25)
             wm.share(everyone = True)
             
@@ -708,15 +712,14 @@ class CIFTool_AGOL(sDataFrame):
     @staticmethod
     def add_class_details(renderer):
         num = len(renderer['classBreakInfos'])
-
-        def edit_labels(renderer, num = num):
+        def edit_labels(renderer):
             labels = [x['label'].split(' - ') for x in renderer['classBreakInfos']]
             min_label = labels[0][0]
             try:
-                max_label = labels[num-1][1]
+                max_label = labels[-1][1]
             except:
-                max_label = labels[num-1][0]
-            if float(min_label) >= 0 and float(max_label) <= 1:
+                max_label = labels[-1][0]
+            if float(min_label) >= 0 and float(max_label) <= 1 and len(labels) > 2:
                 new_labels = []
                 for label in labels:
                     l = round(float(label[0])*100,2)
@@ -786,7 +789,7 @@ class CIFTool_AGOL(sDataFrame):
     @property
     def gis(self):
         warnings.simplefilter('ignore')
-        gis = GIS(self.gis_address, client_id = self.client_id) # log-in to the AGOL
+        gis = GIS(self.gis_address, self.user_name, self.password) # log-in to the AGOL
         print("Successfully logged in as: " + gis.properties.user.username)
         self._gis = gis
         self._contentManager = ContentManager(gis)
@@ -894,7 +897,7 @@ class CIFTool_AGOL(sDataFrame):
         
         df = df.reset_index(drop = True)
         df['State'] = df[address_column_name].str.extract("\s(\w\w)\s\d\d\d\d\d")
-        states = df.State.value_counts().head(len(cif.state_fips)).index.tolist()
+        states = df.State.value_counts().head(len(self.state_fips)).index.tolist()
         df = df.loc[df.State.isin(states),:]
 
         address = df[address_column_name]
@@ -972,9 +975,9 @@ class CIFTool_AGOL(sDataFrame):
         ###########################3
         else:
             raise ValueError("level has to be either 'county' or 'tract'")
-        self.layers[name] = {}
-        layers = {}
-        layer_ids = {}
+            
+            
+            
         df['FIPS'] = df.FIPS.astype(int)
 #         if df.columns.str.contains('Total').sum() > 0:
 #             df = self.sociodemographic_colname_update(df) # to be changed
@@ -986,8 +989,9 @@ class CIFTool_AGOL(sDataFrame):
         sdf = pd.DataFrame.spatial.from_geodataframe(sdf, column_name = 'geometry')
         self.wait_AGOL(.5, verbose = False)
         geo_pat = re.compile(r'(fips|tract|county|state|geometry|type)', flags = re.I)
+        food_desert_pat = re.compile(r'tract.+food\sdesert', flags = re.I)
         # geo_pat2 = re.compile(r'(fips|tract|county|state|type)', flags = re.I)
-        columns     = sdf.columns[~sdf.columns.str.match(geo_pat)].to_list()
+        columns     = sdf.columns[(~sdf.columns.str.match(geo_pat)) + sdf.columns.str.match(food_desert_pat)].to_list()
         final_sdf = sdf.copy() 
         if keep_NA:
             cond = final_sdf.isna().sum().eq(final_sdf.shape[0])
@@ -1019,12 +1023,11 @@ class CIFTool_AGOL(sDataFrame):
         item_id = simpleLayer.properties.serviceItemId
         fields_not_considering = ['FID','fips','county','state','tract','type','Shape__Area','Shape__Length'] 
         fields = [x['name'] for x in simpleLayer.properties.fields if x['name'] not in fields_not_considering]
-        self.groupLayers[name] = {'Layer Object': simpleLayer,
-                                  'id' : item_id,
+        self.groupLayers[name] = {'id' : item_id,
                                   'fields': fields,
                                  'alias': columns}
-        self.groupLayersCP[name] = {'Layer Object': simpleLayer,
-                                  'id' : item_id,
+        self.layers[name] = item_id
+        self.groupLayersCP[name] = {'id' : item_id,
                                   'fields': fields,
                                  'alias': columns}
     
@@ -1217,26 +1220,26 @@ class CIFTool_AGOL(sDataFrame):
 
     def save_layers(self, file_name, directory = None):
         if len(self.layers) == 0:
-            raise Error("There is no layer in this object")
+            raise ValueError("There is no layer in this object")
         else:
             if directory == None:
                 path1 = os.getcwd()
             if file_name[-7:] != '.json':
                 file_name += '.json'
-            with open(os.path.join(path1,file_name), 'wb') as f:
-                json.dump(self.groupLayers, f)
+            with open(os.path.join(path1,file_name), 'w') as f:
+                json.dump(self.layers, f)
                 
                 
     def save_webmaps(self, file_name, directory = None):
-        if len(self.layers) == 0:
-            raise Error("There is no layer in this object")
+        if len(self.webmaps) == 0:
+            raise ValueError("There is no maps in this object")
         else:
             if directory == None:
                 path1 = os.getcwd()
             if file_name[-5:] != '.json':
                 file_name += '.json'
             with open(file_name, 'w') as f:
-                json.dump(cif.webmaps, f)
+                json.dump(self.webmaps, f)
 
     def __call__(self, pickle_file_path):
         self.read_pickle(pickle_file_path)
@@ -1259,7 +1262,7 @@ class CIFTool_AGOL(sDataFrame):
             name = names[i]
             self.genAreaSDF4FL_new(df, name, 'tract', keep_NA = True)
         
-        cif.shareFL()
+        self.shareFL()
         print("Generating Web Maps with County Level Feature Layers")
 
         try:
@@ -1275,10 +1278,10 @@ class CIFTool_AGOL(sDataFrame):
             
         except:
             self.gis
-            self.genWebMapFromGroupLayers(level = 'tract')        
-
-        self.save_layers(file_name = 'GroupLayers')
+            self.genWebMapFromGroupLayers(level = 'tract')     
+            
         self.save_webmaps(file_name = 'WebMaps')
+        self.save_layers(file_name = 'GroupLayers')
             
 
 
@@ -1290,9 +1293,10 @@ class CIFTool_AGOL(sDataFrame):
 
 if __name__ == "__main__" :
     parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('--gis_address', help='arcgis online address for the organization (e.g. https://ky-cancer.maps.arcgis.com')
-    parser.add_argument('--client_id', help = 'client id for the portal login')
-    parser.add_argument('--pickle_file_path', help = 'pickle file to read')
+    parser.add_argument('-g','--gis_address', help='arcgis online address for the organization (e.g. https://ky-cancer.maps.arcgis.com')
+    parser.add_argument('-i', '--user_name', help = 'AGOL/portal user name')
+    parser.add_argument('-p', '--password', help = 'AGOL/portal password')
+    parser.add_argument('-f','--pickle_input_file_path', help = 'pickle file to read')
     parser.add_argument('--csv_file_paths', nargs = '+')
     parser.add_argument('--csv_file_names', nargs = '+')
 
@@ -1311,6 +1315,6 @@ if __name__ == "__main__" :
         print(s.data_dictionary.keys())
 
 
-    if args.pickle_file_path:
-        cif = CIFTool_AGOL( args.gis_address, args.client_id)
-        cif(args.pickle_file_path)
+    if args.pickle_input_file_path:
+        cif = CIFTool_AGOL( args.gis_address, args.user_name, args.password)
+        cif(args.pickle_input_file_path)
