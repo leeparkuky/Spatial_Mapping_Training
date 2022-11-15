@@ -12,11 +12,11 @@ import arcgis
 from arcgis.gis import GIS, ContentManager
 from arcgis.mapping import WebMap
 from arcgis.geocoding import batch_geocode, get_geocoders
-
-
+import geopandas as gpd
+import pandas as pd
 import warnings
 import time
-
+import json
 import argparse
 
 
@@ -26,8 +26,8 @@ class sDataFrame():
         self._county_gdf = None
         self._tract_gdf = None
         self._tract_gdf_new = None
-        
-        
+
+
     def read_pickle(self, file_path):
         """
         read a pickle file and create a class attribute 'data_dictionary'
@@ -37,7 +37,7 @@ class sDataFrame():
         d = pickle.load(open(file_path,'rb'))
         self.data_dictionary = d
         self.rename_all()
-        
+
     @classmethod
     def read_csv(cls, file_path, names = None):
         cls.data_dictionary = {}
@@ -80,7 +80,7 @@ class sDataFrame():
         else:
             raise AttributeError("data_dictionary has not been created")
 
-            
+
     @property
     def tractData(self):
         if self.data_dictionary:
@@ -88,7 +88,7 @@ class sDataFrame():
             return self._tractData
         else:
             raise AttributeError("data_dictionary has not been created")
-            
+
     @property
     def pointData(self):
         if self.data_dictionary:
@@ -107,7 +107,7 @@ class sDataFrame():
         else:
             raise AttributeError("data_dictionary has not been created")
 
-            
+
 #################################################################################################################
     def rename_all(self):
         self.rename_econ_columns()
@@ -135,7 +135,7 @@ class sDataFrame():
             values = [economic_columns[key] if not con else key.replace('Rate ', '') for key, con in zip(keys, cond) ]
             econ.rename(columns = dict(zip(keys, values)), inplace = True)
             self.data_dictionary[table] = econ
-                    
+
     def rename_screening_columns(self):
         table_names  = pd.Series(self.data_dictionary.keys())
         table_names  = table_names[table_names.str.contains('risk factors', flags = re.I)].values
@@ -149,7 +149,7 @@ class sDataFrame():
                                'Met_Colon_Screen': 'Met Colorectal Screening Recommendations'}
             screening.rename(columns = screening_columns, inplace = True)
             self.data_dictionary[table] = screening
-                    
+
     def rename_ht_columns(self):
         table_names  = pd.Series(self.data_dictionary.keys())
         table_names  = table_names[table_names.str.contains('housing', flags = re.I)].values
@@ -160,8 +160,8 @@ class sDataFrame():
                                'Rent Burden (40% Income)': 'High Rent Burden',}
             ht.rename(columns = ht_columns, inplace = True)
             self.data_dictionary[table] = ht
-                
-                
+
+
     def rename_sociodemographics_columns(self):
         table_names  = pd.Series(self.data_dictionary.keys())
         table_names  = table_names[table_names.str.contains('sociodemographics', flags = re.I)].values
@@ -182,8 +182,8 @@ class sDataFrame():
                             'Urban_Percentage': 'Urbanized Residence'}
             sdemo.rename(columns = sdemo_columns, inplace = True)
             self.data_dictionary[table] = sdemo
-                
-                
+
+
     def rename_environment_columns(self):
         table_names  = pd.Series(self.data_dictionary.keys())
         table_names  = table_names[table_names.str.contains('environment', flags = re.I)].values
@@ -194,9 +194,9 @@ class sDataFrame():
                           'LILA_Tracts_Vehicle': 'Tracts that are Food Deserts'}
             env.rename(columns = env_columns, inplace = True)
             self.data_dictionary[table] = env
-                
-                
-                
+
+
+
     def rename_cancer_columns(self):
         table_names  = pd.Series(self.data_dictionary.keys())
         table_names  = table_names[table_names.str.contains('cancer', flags = re.I)].values
@@ -224,22 +224,22 @@ class sDataFrame():
                          'Thyroid': 'Thyroid'}
             cancer.rename(columns = cancer_columns, inplace = True)
             self.data_dictionary[table] = cancer
-                
-                
-###################################################################################################################                
-            
+
+
+###################################################################################################################
+
     @staticmethod
     def find_state_fips(examples, idx = 0):
         examples = {k: v for k,v in examples.items() if not k[-5:] =='_long' }
         state_fips = examples[list(examples.keys())[idx]].reset_index().FIPS.astype(str).apply(lambda x: x[:2]).unique().tolist()
         return state_fips
-    
+
     @staticmethod
     def find_county_fips(examples, idx = 0):
         county_fips = examples[list(examples.keys())[idx]].reset_index().FIPS.unique().tolist()
         return county_fips
 
-    
+
     @property
     def state_fips(self):
         if self.data_dictionary:
@@ -247,7 +247,7 @@ class sDataFrame():
             return self._state_fips
         else:
             raise AttributeError("data_dictionary has not been created")
-            
+
     @property
     def county_fips(self):
         if self.data_dictionary:
@@ -262,10 +262,10 @@ class sDataFrame():
         county = f'https://www2.census.gov/geo/tiger/TIGER{self.year}/COUNTY/tl_{self.year}_us_county.zip'
         gdf = gpd.read_file(county)
         gdf = gdf.loc[gdf.STATEFP.isin(self.state_fips), ['GEOID','geometry']]
-        gdf.GEOID = gdf.GEOID.astype(int)
+        gdf.GEOID = gdf.GEOID.astype(str)
         self._county_gdf =  gdf.reset_index(drop = True)
         return self._county_gdf
-        
+
     @property
     def tiger_census_tract(self):
         states = self.state_fips
@@ -274,7 +274,7 @@ class sDataFrame():
         self._tract_gdf = final_gdf
         self._tract_num = final_gdf.GEOID.unique().shape[0]
         return self._tract_gdf
-    
+
     @property
     def next_tiger_census_tract(self):
         states = self.state_fips
@@ -285,7 +285,7 @@ class sDataFrame():
         self._tract_num_new = final_gdf.GEOID.unique().shape[0]
         return self._tract_gdf_new
 
-    
+
     @staticmethod
     def get_tiger_census(year, state, county_FIPS = None):
         def transform_gdf(gdf, county_fips):
@@ -295,13 +295,13 @@ class sDataFrame():
             else:
                 gdf = gdf.loc[:,  ['GEOID','geometry']]
             return gdf
-        
+
         if isinstance(state, int) or isinstance(state, str):
             tract = f"https://www2.census.gov/geo/tiger/TIGER{year}/TRACT/tl_{year}_{state}_tract.zip"
             gdf = gpd.read_file(tract)
             countyfp = gdf.STATEFP + gdf.COUNTYFP
             gdf = transform_gdf(gdf, county_FIPS)
-            gdf.GEOID = gdf.GEOID.astype(int)
+            gdf.GEOID = gdf.GEOID.astype(str)
             final_gdf = gdf.reset_index(drop = True)
             return final_gdf
         elif isinstance(state, list):
@@ -311,7 +311,7 @@ class sDataFrame():
                 gdf = gpd.read_file(tract)
                 countyfp = gdf.STATEFP + gdf.COUNTYFP
                 gdf = transform_gdf(gdf, county_FIPS)
-                gdf.GEOID = gdf.GEOID.astype(int)
+                gdf.GEOID = gdf.GEOID.astype(str)
                 final_gdf = gdf.reset_index(drop = True)
                 return final_gdf
             elif len(state) > 1:
@@ -321,18 +321,19 @@ class sDataFrame():
                     gdf = gpd.read_file(tract)
                     countyfp = gdf.STATEFP + gdf.COUNTYFP
                     gdf = transform_gdf(gdf, county_FIPS)
-                    gdf.GEOID = gdf.GEOID.astype(int)
+                    gdf.GEOID = gdf.GEOID.astype(str)
                     dataframes.append(gdf.reset_index(drop = True))
                 final_gdf = pd.concat(dataframes)
                 return final_gdf
             else:
                 raise TypeError("No element in state")
 
-                
-                
-#######################################################################################################################                
-                
-                             
+
+
+#######################################################################################################################
+
+
+
 class CIFTool_AGOL(sDataFrame):
     def __init__(self, gis_address, user_name, password, folder_name = None):
         self.gis_address = gis_address
@@ -366,16 +367,16 @@ class CIFTool_AGOL(sDataFrame):
                 time.sleep(waitTime)
         else:
             pass
-        
-        
+
+
     @staticmethod
     def sociodemographic_colname_update(df):
         df = df.rename(columns = {'Total':'Total Population',
                             '18 to 64' : 'Age 18 to 64'})
         return df
-    
-    
-    
+
+
+
     @classmethod
     def from_layers(cls, layers, gis_address, client_id):
         obj = cls(gis_address, client_id)
@@ -408,7 +409,7 @@ class CIFTool_AGOL(sDataFrame):
                         lyr = g_lyr.layers[0]
                         obj.layers[key][k] = lyr
         return obj
-        
+
     @classmethod
     def from_pickle(cls, file_path, gis_address, client_id):
         layers = pickle.load(open(file_path,'rb'))
@@ -449,20 +450,20 @@ class CIFTool_AGOL(sDataFrame):
                                     contentManager = obj.gis
                                     obj.error_count = 0
         return obj
-            
-        
-    
+
+
+
     def genTractMaps(layers):
         pass
-    
+
     def genCountyMaps(self):
         pass
-    
-    
-    
-    
+
+
+
+
     @staticmethod
-    def manage_popups(wm, level = 'county', title  = None):
+    def manage_popups(wm, level = 'county', title  = None, labels_to_select = None):
         for lyr in wm.layers:
             if title is None:
                 lyr.popupInfo.title = lyr.popupInfo.title.replace("_", " ").title()
@@ -470,8 +471,10 @@ class CIFTool_AGOL(sDataFrame):
                 lyr.popupInfo.title = title
             else:
                 raise ValueError("title must be a string")
-
-            main_fields = [f.label for f in lyr.popupInfo.fieldInfos if f.fieldName != f.label]
+            if labels_to_select:
+                main_fields = [f.label for f in lyr.popupInfo.fieldInfos if f.label in labels_to_select]
+            else:
+                main_fields = [f.label for f in lyr.popupInfo.fieldInfos if f.fieldName != f.label]
             try:
                 main_fields.remove("Fips")
             except:
@@ -490,9 +493,9 @@ class CIFTool_AGOL(sDataFrame):
                     field.visible = True
                 else:
                     field.visible = False
-        return wm    
-    
-    
+        return wm
+
+
     def genWebMapFromGroupLayers(self, level= 'county'):
         if self._contentManager:
             contentManager = self._contentManager
@@ -546,12 +549,13 @@ class CIFTool_AGOL(sDataFrame):
                         # wm.add_layer(item, {'title': f'{title} : {key}',
                         #                    'renderer' : new_renderer})
                         self.wait_AGOL(.5, desc = f'Adding the layer "{flname}:{title}" to the map')
-                        wm = self.manage_popups(wm, level = level, title = f"{flname} : {title}")
+                        wm = self.manage_popups(wm, level = level, title = f"{flname} : {title}", 
+                                               labels_to_select = original_colname)
                         self.wait_AGOL(.5, desc = f"Managing Popup")
                         wm = self.addPointLayers(wm, start_index = 1)
                         webmap_item_properties = {'title': f'{flname} : {title}',
                                                  'snippet':f'{flname} : {title}',
-                                                 'tags' : ['Python','Automated'], 
+                                                 'tags' : ['Python','Automated'],
                                                   'extent': extent
                                                  }
                         webmap = wm.save(webmap_item_properties, folder = self.AGOL_folder) # testing folder is temporary set-up
@@ -574,13 +578,13 @@ class CIFTool_AGOL(sDataFrame):
             del self.groupLayersCP[flname]
         self.shareWebMaps(level = level)
         return self.webmaps
-    
+
     def shareWebMaps(self, level = 'all'):
         if self._contentManager:
             contentManager = self._contentManager
         else:
             contentManager = self.gis
-            
+
         area_layers = [key for key in self.groupLayers.keys() if not bool(re.match("Facilities.+", key))]
         if level.lower() == 'county':
             area_layers = [key for key in area_layers if not bool(re.match(".+(Tract)", key))]
@@ -589,9 +593,9 @@ class CIFTool_AGOL(sDataFrame):
         elif level.lower() == 'all':
             pass
         else:
-            raise ValueError("level can ben either 'county','tract', or 'all'")            
-            
-            
+            raise ValueError("level can ben either 'county','tract', or 'all'")
+
+
         map_names = []
         map_ids = []
         for group_name, maps in self.webmaps.items():
@@ -599,15 +603,15 @@ class CIFTool_AGOL(sDataFrame):
                 for map_name, map_id in maps.items():
                     map_names.append(f"{group_name}:{map_name}")
                     map_ids.append(map_id)
-                
+
         for i in trange(len(map_ids), leave = False, desc = "sharing webmaps"):
             map_id = map_ids[i]
             wm = self._contentManager.search(map_id)[0]
             time.sleep(.25)
             wm.share(everyone = True)
-            
-        
-        
+
+
+
     def genWebMap(self, layers, title):
         if self._contentManager:
             contentManager = self._contentManager
@@ -652,13 +656,13 @@ class CIFTool_AGOL(sDataFrame):
                         self.error_count = 0
         return wm
 
-        
+
     @staticmethod
     def getFieldNames(lyr):
         field_names = [x['name'] for x in lyr.properties.fields]
         return field_names
-    
-    
+
+
     @staticmethod
     def getAGOLFieldName(lyr, FieldName):
         flag = True
@@ -682,10 +686,10 @@ class CIFTool_AGOL(sDataFrame):
         return index, AGOLName
 #         lyr.properties['fields'][index]['alias'] = FieldName
 
-    
+
     @staticmethod
     def renderer_definition(lyr, fieldName):
-        num_unique = len(lyr.query().sdf[fieldName].unique()) 
+        num_unique = len(lyr.query().sdf[fieldName].unique())
         if num_unique >= 5:
             definition = {
                 'type':'classBreaksDef',
@@ -699,7 +703,7 @@ class CIFTool_AGOL(sDataFrame):
                 'classificationField':fieldName,
                 'classificationMethod':'esriClassifyNaturalBreaks',
                 'breakCount':num_unique,
-                    }        
+                    }
         flag = True
         while flag:
             try:
@@ -708,7 +712,7 @@ class CIFTool_AGOL(sDataFrame):
             except:
                 time.sleep(5)
         return renderer
-        
+
     @staticmethod
     def add_class_details(renderer):
         num = len(renderer['classBreakInfos'])
@@ -731,7 +735,7 @@ class CIFTool_AGOL(sDataFrame):
             else:
                 return None
 
-        
+
         class1 = [237, 248, 233, 216]
         class2 = [186, 228, 179, 216]
         class3 = [116, 196, 118, 216]
@@ -741,11 +745,11 @@ class CIFTool_AGOL(sDataFrame):
         color_scheme = [class1, class2, class3, class4, class5]
 
         default_symbol = {
-                "type" : "esriSFS", 
-                "style" : "esriSFSSolid", 
-                "color" : [], 
-                'outline': {'type': 'esriSLS', 
-                            'style': 'esriSLSSolid', 
+                "type" : "esriSFS",
+                "style" : "esriSFSSolid",
+                "color" : [],
+                'outline': {'type': 'esriSLS',
+                            'style': 'esriSLSSolid',
                             'color': [52, 52, 52, 255],
                             "width" : 0.4}
                     }
@@ -768,11 +772,11 @@ class CIFTool_AGOL(sDataFrame):
             class_info['symbol'] = symbol
 
 
-        return renderer    
-    
+        return renderer
+
 #     def create_webmap(self, title, )
-    
-        
+
+
     def genFeatureLayer(self, sdf, title):
         if self._contentManager:
             contentManager = self._contentManager
@@ -784,8 +788,8 @@ class CIFTool_AGOL(sDataFrame):
         self.wait_AGOL(desc = f"Waiting to Upload {title} layer to AGOL")
         time.sleep(.5)
         return lyrs
-    
-    
+
+
     @property
     def gis(self):
         warnings.simplefilter('ignore')
@@ -794,8 +798,8 @@ class CIFTool_AGOL(sDataFrame):
         self._gis = gis
         self._contentManager = ContentManager(gis)
         return self._contentManager
-                
-    
+
+
     def set_folder(self, folder_name):
         try:
             gis = self._gis
@@ -823,11 +827,11 @@ class CIFTool_AGOL(sDataFrame):
             self.AGOL_folder = folder_name
         else:
             raise Error("folder name has to be in the string format")
-            
 
-    
-    
-    
+
+
+
+
     def genCountyFL(self, verbose = True):
         data_dictionary = self.countyData
         if verbose:
@@ -841,7 +845,7 @@ class CIFTool_AGOL(sDataFrame):
             for key in keys:
                 df = data_dictionary[key]
                 self.genAreaSDF4FL(df, key, 'county')
-            
+
     def genTractFL(self, verbose = True):
         data_dictionary = self.tractData
         print(data_dictionary.keys())
@@ -856,8 +860,8 @@ class CIFTool_AGOL(sDataFrame):
             for key in keys:
                 df = data_dictionary[key]
                 self.genAreaSDF4FL(df, key, 'tract')
-        
-    
+
+
     def genPointFL(self, agg = True):
         final_sdf = self.batchgeocode(df = self.pointData['Facilities and Providers'])
         if agg:
@@ -865,9 +869,9 @@ class CIFTool_AGOL(sDataFrame):
             cond_FQHD         = final_sdf.Type.str.contains("(FQHC)|(HPSA)")
             final_sdf.loc[cond_gi_providers, "Type"] = "GI Providers"
             final_sdf.loc[cond_FQHD, "Type"]         = "FQHCs / Other HPSA"
-        
+
         facility_types = list(final_sdf.Type.unique())
-        
+
         for k in trange(len(facility_types)):
             facility = facility_types[k]
 #         for facility in final_sdf['Type'].unique():
@@ -887,29 +891,29 @@ class CIFTool_AGOL(sDataFrame):
             # 2. Need to change the FL name -> complete
             # 3. Need to change popup -> Yes..
             #############################################################################################
-    
+
     def batchgeocode(self,df, address_column_name = "Address"):
 #         geocoded_address = geocode(address)
         try:
             self.SuggestedBatchSize
         except:
             self.set_geocoder()
-        
+
         df = df.reset_index(drop = True)
         df['State'] = df[address_column_name].str.extract("\s(\w\w)\s\d\d\d\d\d")
         states = df.State.value_counts().head(len(self.state_fips)).index.tolist()
         df = df.loc[df.State.isin(states),:]
 
         address = df[address_column_name]
-                
+
         SBS = self.SuggestedBatchSize
         N = len(address)
-        
+
         if N/SBS == N//SBS:
             numSplits = N/SBS
         else:
             numSplits = N//SBS + 1
-        
+
         SHAPES = []
         for i in range(numSplits):
             start = i*SBS
@@ -921,14 +925,14 @@ class CIFTool_AGOL(sDataFrame):
             feature_set.set_index('ResultID', inplace = True)
             shape = feature_set.SHAPE
             SHAPES.append(shape)
-        
+
         shapes = pd.concat(SHAPES)
         df['SHAPE'] = None
         df.loc[df.index.isin(shapes.index), 'SHAPE'] = shapes.sort_index()
         df = df.dropna().reset_index(drop = True)
         df.drop('State', axis = 1, inplace = True)
         return df
-    
+
     def set_geocoder(self):
         try:
             gis = self._gis
@@ -938,16 +942,16 @@ class CIFTool_AGOL(sDataFrame):
         geocoder = get_geocoders(gis)[0]
         self.SuggestedBatchSize = geocoder.properties.locatorProperties.SuggestedBatchSize
 
-    
+
     def genAreaSDF4FL_new(self, df, name, level = 'county', tqdm = None, keep_NA = True):
         """
         with a county or tract level dataset, it creates feature layer for each column.
-        Then, it uploads each feature layer to AGOL. 
+        Then, it uploads each feature layer to AGOL.
         The name of the Feature Layer will be {name}-{column name in a df}
         """
         if len(df.index.names)>1:
             df.reset_index(inplace = True)
-        
+
         if level == 'county':
             if self._county_gdf is not None:
                 gdf = self._county_gdf.copy()
@@ -975,14 +979,12 @@ class CIFTool_AGOL(sDataFrame):
         ###########################3
         else:
             raise ValueError("level has to be either 'county' or 'tract'")
-            
-            
-            
-        df['FIPS'] = df.FIPS.astype(int)
+        df['FIPS'] = df.FIPS.astype(str)
+        gdf['GEOID'] = gdf.GEOID.astype(str)
 #         if df.columns.str.contains('Total').sum() > 0:
 #             df = self.sociodemographic_colname_update(df) # to be changed
 #         if df.columns.str.contains(re.compile('LILAT.*')).sum() > 0:
-#             df = df.rename(columns = {'LILATracts_Vehicle' : 'LILA Tracts Vehicle'}) ## to be changed  
+#             df = df.rename(columns = {'LILATracts_Vehicle' : 'LILA Tracts Vehicle'}) ## to be changed
         sdf = df.merge(gdf, how = 'left', left_on = 'FIPS', right_on = 'GEOID') # we need to pick up from here
         sdf.drop('GEOID', axis = 1, inplace = True) # drop the geoid
         sdf = gpd.GeoDataFrame(sdf, geometry = 'geometry')
@@ -992,7 +994,7 @@ class CIFTool_AGOL(sDataFrame):
         food_desert_pat = re.compile(r'tract.+food\sdesert', flags = re.I)
         # geo_pat2 = re.compile(r'(fips|tract|county|state|type)', flags = re.I)
         columns     = sdf.columns[(~sdf.columns.str.match(geo_pat)) + sdf.columns.str.match(food_desert_pat)].to_list()
-        final_sdf = sdf.copy() 
+        final_sdf = sdf.copy()
         if keep_NA:
             cond = final_sdf.isna().sum().eq(final_sdf.shape[0])
             columns_to_drop = final_sdf.columns[cond].tolist()
@@ -1021,7 +1023,8 @@ class CIFTool_AGOL(sDataFrame):
         simpleLayer = groupLayer.layers[0]
         self.updateLayerName(simpleLayer, name)
         item_id = simpleLayer.properties.serviceItemId
-        fields_not_considering = ['FID','fips','county','state','tract','type','Shape__Area','Shape__Length'] 
+        fields_not_considering = ['FID','fips','Fips','FIPS','County','State','Tract','Type',
+                                  'county','state','tract','type','Shape__Area','Shape__Length']
         fields = [x['name'] for x in simpleLayer.properties.fields if x['name'] not in fields_not_considering]
         self.groupLayers[name] = {'id' : item_id,
                                   'fields': fields,
@@ -1030,19 +1033,19 @@ class CIFTool_AGOL(sDataFrame):
         self.groupLayersCP[name] = {'id' : item_id,
                                   'fields': fields,
                                  'alias': columns}
-    
-    
-    
+
+
+
 
     def genAreaSDF4FL(self, df, name, level = 'county', tqdm = None, keep_NA = False):
         """
         with a county or tract level dataset, it creates feature layer for each column.
-        Then, it uploads each feature layer to AGOL. 
+        Then, it uploads each feature layer to AGOL.
         The name of the Feature Layer will be {name}-{column name in a df}
         """
         if len(df.index.names)>1:
             df.reset_index(inplace = True)
-        
+
         if level == 'county':
             if self._county_gdf is not None:
                 gdf = self._county_gdf.copy()
@@ -1108,7 +1111,7 @@ class CIFTool_AGOL(sDataFrame):
                 if self.error_count >= 5:
                     contentManager = self.gis
                     self.error_count = 0
-                
+
             simpleLayer = groupLayer.layers[0]
             self.updateLayerName(simpleLayer, layer_name)
             item_id = simpleLayer.properties.serviceItemId
@@ -1122,10 +1125,10 @@ class CIFTool_AGOL(sDataFrame):
         elif level == 'tract':
             self.tractLayers[name] = layers
             self.tractLayers_id[name] = layer_ids
-            
+
         return layers
-    
-    
+
+
     def updateLayerName(self, lyr, name):
         flag = True
         while flag:
@@ -1139,8 +1142,8 @@ class CIFTool_AGOL(sDataFrame):
                 if self.error_count >= 5:
                     contentManager = self.gis
                     self.error_count = 0
-                    
-                    
+
+
     def addPointLayers(self, webmap, start_index = 0):
         if self._contentManager:
             contentManager = self._contentManager
@@ -1160,14 +1163,14 @@ class CIFTool_AGOL(sDataFrame):
             pl.manager.properties.drawingInfo.renderer = renderer
             pl.properties.drawingInfo.renderer         = renderer
             webmap.add_layer(pl)
-        for i in range(start_index, start_index + 3):
+        for i in range(start_index, start_index + 4):
             webmap.layers[i].popupInfo.title = '{name} ({type})'
             webmap.layers[i].popupInfo.description = "<b>Address</b> : {address} <br> <b>Phone Number</b> : {phone_numb}"
-        
-        return webmap                    
-                    
-                    
-                    
+
+        return webmap
+
+
+
     def shareFL(self):
         if self._contentManager:
             contentManager = self._contentManager
@@ -1178,7 +1181,7 @@ class CIFTool_AGOL(sDataFrame):
             item  = contentManager.search(id_num, item_type = 'Feature Layer Collection', max_items = 100)
             item  = item[0]
             item.share(everyone = True)
-    
+
     @staticmethod
     def point_renderer(color, outline_color = None, size = 6):
         if outline_color is None:
@@ -1213,10 +1216,10 @@ class CIFTool_AGOL(sDataFrame):
         renderer = arcgis._impl.common._mixins.PropertyMap(renderer)
         return renderer
 
-                    
-                    
-                    
-                    
+
+
+
+
 
     def save_layers(self, file_name, directory = None):
         if len(self.layers) == 0:
@@ -1228,8 +1231,8 @@ class CIFTool_AGOL(sDataFrame):
                 file_name += '.json'
             with open(os.path.join(path1,file_name), 'w') as f:
                 json.dump(self.layers, f)
-                
-                
+
+
     def save_webmaps(self, file_name, directory = None):
         if len(self.webmaps) == 0:
             raise ValueError("There is no maps in this object")
@@ -1245,7 +1248,7 @@ class CIFTool_AGOL(sDataFrame):
         self.read_pickle(pickle_file_path)
         print("Generating Web Feature Layers for Facilities")
         self.genPointFL()
-        
+
         names = list(self.countyData.keys())
         dfs    = list(self.countyData.values())
         print("Generating Web Feature Layers for County Level Data")
@@ -1253,7 +1256,7 @@ class CIFTool_AGOL(sDataFrame):
             df = dfs[i]
             name = names[i]
             self.genAreaSDF4FL_new(df, name, 'county', keep_NA = True)
-        
+
         print("Generating Web Feature Layers for Tract Level Data")
         names = list(self.tractData.keys())
         dfs    = list(self.tractData.values())
@@ -1261,28 +1264,30 @@ class CIFTool_AGOL(sDataFrame):
             df = dfs[i]
             name = names[i]
             self.genAreaSDF4FL_new(df, name, 'tract', keep_NA = True)
-        
+
         self.shareFL()
         print("Generating Web Maps with County Level Feature Layers")
 
         try:
             self.genWebMapFromGroupLayers(level = 'county')
-            
+
         except:
             self.gis
             self.genWebMapFromGroupLayers(level = 'county')
-            
+
         print("Generating Web Maps with Tract Level Feature Layers")
         try:
             self.genWebMapFromGroupLayers(level = 'tract')
-            
+
         except:
             self.gis
-            self.genWebMapFromGroupLayers(level = 'tract')     
-            
+            self.genWebMapFromGroupLayers(level = 'tract')
+
+
         self.save_webmaps(file_name = 'WebMaps')
+
         self.save_layers(file_name = 'GroupLayers')
-            
+
 
 
 
