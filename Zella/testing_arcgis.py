@@ -463,7 +463,7 @@ class CIFTool_AGOL(sDataFrame):
 
 
     @staticmethod
-    def manage_popups(wm, level = 'county', title  = None):
+    def manage_popups(wm, level = 'county', title  = None, labels_to_select = None):
         for lyr in wm.layers:
             if title is None:
                 lyr.popupInfo.title = lyr.popupInfo.title.replace("_", " ").title()
@@ -471,8 +471,10 @@ class CIFTool_AGOL(sDataFrame):
                 lyr.popupInfo.title = title
             else:
                 raise ValueError("title must be a string")
-
-            main_fields = [f.label for f in lyr.popupInfo.fieldInfos if f.fieldName != f.label]
+            if labels_to_select:
+                main_fields = [f.label for f in lyr.popupInfo.fieldInfos if f.label in labels_to_select]
+            else:
+                main_fields = [f.label for f in lyr.popupInfo.fieldInfos if f.fieldName != f.label]
             try:
                 main_fields.remove("Fips")
             except:
@@ -547,7 +549,8 @@ class CIFTool_AGOL(sDataFrame):
                         # wm.add_layer(item, {'title': f'{title} : {key}',
                         #                    'renderer' : new_renderer})
                         self.wait_AGOL(.5, desc = f'Adding the layer "{flname}:{title}" to the map')
-                        wm = self.manage_popups(wm, level = level, title = f"{flname} : {title}")
+                        wm = self.manage_popups(wm, level = level, title = f"{flname} : {title}", 
+                                               labels_to_select = original_colname)
                         self.wait_AGOL(.5, desc = f"Managing Popup")
                         wm = self.addPointLayers(wm, start_index = 1)
                         webmap_item_properties = {'title': f'{flname} : {title}',
@@ -1020,7 +1023,8 @@ class CIFTool_AGOL(sDataFrame):
         simpleLayer = groupLayer.layers[0]
         self.updateLayerName(simpleLayer, name)
         item_id = simpleLayer.properties.serviceItemId
-        fields_not_considering = ['FID','fips','county','state','tract','type','Shape__Area','Shape__Length']
+        fields_not_considering = ['FID','fips','Fips','FIPS','County','State','Tract','Type',
+                                  'county','state','tract','type','Shape__Area','Shape__Length']
         fields = [x['name'] for x in simpleLayer.properties.fields if x['name'] not in fields_not_considering]
         self.groupLayers[name] = {'id' : item_id,
                                   'fields': fields,
@@ -1159,7 +1163,7 @@ class CIFTool_AGOL(sDataFrame):
             pl.manager.properties.drawingInfo.renderer = renderer
             pl.properties.drawingInfo.renderer         = renderer
             webmap.add_layer(pl)
-        for i in range(start_index, start_index + 3):
+        for i in range(start_index, start_index + 4):
             webmap.layers[i].popupInfo.title = '{name} ({type})'
             webmap.layers[i].popupInfo.description = "<b>Address</b> : {address} <br> <b>Phone Number</b> : {phone_numb}"
 

@@ -1,0 +1,476 @@
+FIPS,County,State,Census_Tract_2019,measure,value
+33001,Belknap County,New Hampshire,33001965100,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001966500,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001966402,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001966200,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001966100,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001966000,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001965900,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001966401,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001965700,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001965600,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001965598,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001965400,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001965300,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001965200,LILATracts_Vehicle,0
+33001,Belknap County,New Hampshire,33001965800,LILATracts_Vehicle,0
+33003,Carroll County,New Hampshire,33003956300,LILATracts_Vehicle,0
+33003,Carroll County,New Hampshire,33003956100,LILATracts_Vehicle,0
+33003,Carroll County,New Hampshire,33003956000,LILATracts_Vehicle,0
+33003,Carroll County,New Hampshire,33003955900,LILATracts_Vehicle,1
+33003,Carroll County,New Hampshire,33003955500,LILATracts_Vehicle,0
+33003,Carroll County,New Hampshire,33003955600,LILATracts_Vehicle,1
+33003,Carroll County,New Hampshire,33003955400,LILATracts_Vehicle,0
+33003,Carroll County,New Hampshire,33003956400,LILATracts_Vehicle,0
+33003,Carroll County,New Hampshire,33003955800,LILATracts_Vehicle,0
+33003,Carroll County,New Hampshire,33003955300,LILATracts_Vehicle,1
+33003,Carroll County,New Hampshire,33003955100,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005971401,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005971100,LILATracts_Vehicle,1
+33005,Cheshire County,New Hampshire,33005971300,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005971402,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005971500,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005971600,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005971700,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005970800,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005970700,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005970600,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005970500,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005971000,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005970400,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005970100,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005970200,LILATracts_Vehicle,0
+33005,Cheshire County,New Hampshire,33005970900,LILATracts_Vehicle,0
+33007,Coos County,New Hampshire,33007950900,LILATracts_Vehicle,0
+33007,Coos County,New Hampshire,33007951000,LILATracts_Vehicle,0
+33007,Coos County,New Hampshire,33007950800,LILATracts_Vehicle,0
+33007,Coos County,New Hampshire,33007950700,LILATracts_Vehicle,1
+33007,Coos County,New Hampshire,33007950600,LILATracts_Vehicle,1
+33007,Coos County,New Hampshire,33007950500,LILATracts_Vehicle,0
+33007,Coos County,New Hampshire,33007950400,LILATracts_Vehicle,0
+33007,Coos County,New Hampshire,33007950300,LILATracts_Vehicle,0
+33007,Coos County,New Hampshire,33007951100,LILATracts_Vehicle,0
+33007,Coos County,New Hampshire,33007950200,LILATracts_Vehicle,0
+33007,Coos County,New Hampshire,33007950100,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009961800,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009960200,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009961700,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009961602,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009961500,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009961400,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009961300,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009961200,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009960100,LILATracts_Vehicle,1
+33009,Grafton County,New Hampshire,33009961100,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009960800,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009960700,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009960600,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009960500,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009960400,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009960300,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009961000,LILATracts_Vehicle,1
+33009,Grafton County,New Hampshire,33009960900,LILATracts_Vehicle,0
+33009,Grafton County,New Hampshire,33009961601,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011002902,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011011500,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011011402,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011011401,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011011300,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011011200,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011011102,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011011101,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011011000,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011010900,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011010800,LILATracts_Vehicle,1
+33011,Hillsborough County,New Hampshire,33011010700,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011010600,LILATracts_Vehicle,1
+33011,Hillsborough County,New Hampshire,33011010500,LILATracts_Vehicle,1
+33011,Hillsborough County,New Hampshire,33011010400,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011010302,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011010301,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011010200,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011010100,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011002903,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011002901,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011002800,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011002702,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011002701,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011002600,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011002500,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011002400,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011002300,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011002200,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011002000,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011012100,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011001900,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011012200,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011013100,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011200400,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011200300,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011200200,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011200100,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011025500,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011025000,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011024000,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011023000,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011022500,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011022000,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011021500,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011021000,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011020000,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011019502,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011019501,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011019000,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011018502,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011018501,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011018000,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011017100,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011016202,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011016201,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011016100,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011015200,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011015100,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011014300,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011014202,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011014201,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011014100,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011012300,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011001800,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011002100,LILATracts_Vehicle,1
+33011,Hillsborough County,New Hampshire,33011001600,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011001700,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011000101,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011000202,LILATracts_Vehicle,1
+33011,Hillsborough County,New Hampshire,33011000203,LILATracts_Vehicle,1
+33011,Hillsborough County,New Hampshire,33011000204,LILATracts_Vehicle,1
+33011,Hillsborough County,New Hampshire,33011000300,LILATracts_Vehicle,1
+33011,Hillsborough County,New Hampshire,33011000600,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011000700,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011000800,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011000102,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011000902,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011001500,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011001000,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011001100,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011001200,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011001300,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011001400,LILATracts_Vehicle,0
+33011,Hillsborough County,New Hampshire,33011000901,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013035000,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013036000,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013037000,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013038000,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013038500,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013039000,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013040000,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013040500,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013042500,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013041500,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013043001,LILATracts_Vehicle,1
+33013,Merrimack County,New Hampshire,33013043002,LILATracts_Vehicle,1
+33013,Merrimack County,New Hampshire,33013044000,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013044100,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013044300,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013034000,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013044200,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013041000,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013033000,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013032706,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013032800,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013032900,LILATracts_Vehicle,1
+33013,Merrimack County,New Hampshire,33013003001,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013003006,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013003100,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013030000,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013031001,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013031002,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013003200,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013032200,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013032300,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013032400,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013032500,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013032600,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013032701,LILATracts_Vehicle,0
+33013,Merrimack County,New Hampshire,33013032100,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015063002,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015071000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015069700,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015069300,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015069200,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015069100,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015064000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015067502,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015065005,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015065006,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015065008,LILATracts_Vehicle,1
+33015,Rockingham County,New Hampshire,33015066000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015067000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015100100,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015067501,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015065001,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015100200,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015105100,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015100302,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015106101,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015106102,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015106200,LILATracts_Vehicle,1
+33015,Rockingham County,New Hampshire,33015106400,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015107100,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015107200,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015107400,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015107500,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015063001,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015104102,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015104101,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015103100,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015102100,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015101100,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015100400,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015100301,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015062500,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015065007,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015061001,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015062000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015003301,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015003400,LILATracts_Vehicle,1
+33015,Rockingham County,New Hampshire,33015003500,LILATracts_Vehicle,1
+33015,Rockingham County,New Hampshire,33015003601,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015003602,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015003701,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015003703,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015003801,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015003802,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015003901,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015003902,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015004000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015003302,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015051000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015060000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015050000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015058000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015057000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015056000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015059000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015055001,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015054000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015053000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015052000,LILATracts_Vehicle,0
+33015,Rockingham County,New Hampshire,33015055002,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017083001,LILATracts_Vehicle,1
+33017,Strafford County,New Hampshire,33017082000,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017080204,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017081600,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017081500,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017081400,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017081300,LILATracts_Vehicle,1
+33017,Strafford County,New Hampshire,33017081200,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017081100,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017080500,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017080203,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017084400,LILATracts_Vehicle,1
+33017,Strafford County,New Hampshire,33017080100,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017084200,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017084300,LILATracts_Vehicle,1
+33017,Strafford County,New Hampshire,33017084500,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017084600,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017085000,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017086000,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017087000,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017088000,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017083002,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017088500,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017080202,LILATracts_Vehicle,0
+33017,Strafford County,New Hampshire,33017084100,LILATracts_Vehicle,1
+33019,Sullivan County,New Hampshire,33019975200,LILATracts_Vehicle,0
+33019,Sullivan County,New Hampshire,33019975300,LILATracts_Vehicle,0
+33019,Sullivan County,New Hampshire,33019975400,LILATracts_Vehicle,1
+33019,Sullivan County,New Hampshire,33019975500,LILATracts_Vehicle,0
+33019,Sullivan County,New Hampshire,33019975600,LILATracts_Vehicle,0
+33019,Sullivan County,New Hampshire,33019975700,LILATracts_Vehicle,0
+33019,Sullivan County,New Hampshire,33019975800,LILATracts_Vehicle,1
+33019,Sullivan County,New Hampshire,33019975901,LILATracts_Vehicle,1
+33019,Sullivan County,New Hampshire,33019975902,LILATracts_Vehicle,1
+33019,Sullivan County,New Hampshire,33019975100,LILATracts_Vehicle,0
+50001,Addison County,Vermont,50001961000,LILATracts_Vehicle,0
+50001,Addison County,Vermont,50001960900,LILATracts_Vehicle,0
+50001,Addison County,Vermont,50001960800,LILATracts_Vehicle,0
+50001,Addison County,Vermont,50001960300,LILATracts_Vehicle,0
+50001,Addison County,Vermont,50001960600,LILATracts_Vehicle,0
+50001,Addison County,Vermont,50001960500,LILATracts_Vehicle,0
+50001,Addison County,Vermont,50001960400,LILATracts_Vehicle,0
+50001,Addison County,Vermont,50001960700,LILATracts_Vehicle,0
+50001,Addison County,Vermont,50001960200,LILATracts_Vehicle,0
+50001,Addison County,Vermont,50001960100,LILATracts_Vehicle,0
+50003,Bennington County,Vermont,50003971200,LILATracts_Vehicle,1
+50003,Bennington County,Vermont,50003971100,LILATracts_Vehicle,0
+50003,Bennington County,Vermont,50003970900,LILATracts_Vehicle,0
+50003,Bennington County,Vermont,50003970800,LILATracts_Vehicle,0
+50003,Bennington County,Vermont,50003970600,LILATracts_Vehicle,0
+50003,Bennington County,Vermont,50003970500,LILATracts_Vehicle,0
+50003,Bennington County,Vermont,50003970400,LILATracts_Vehicle,0
+50003,Bennington County,Vermont,50003970300,LILATracts_Vehicle,0
+50003,Bennington County,Vermont,50003970200,LILATracts_Vehicle,0
+50003,Bennington County,Vermont,50003971000,LILATracts_Vehicle,0
+50003,Bennington County,Vermont,50003970700,LILATracts_Vehicle,0
+50003,Bennington County,Vermont,50003971300,LILATracts_Vehicle,0
+50005,Caledonia County,Vermont,50005957900,LILATracts_Vehicle,0
+50005,Caledonia County,Vermont,50005957800,LILATracts_Vehicle,0
+50005,Caledonia County,Vermont,50005957100,LILATracts_Vehicle,0
+50005,Caledonia County,Vermont,50005957200,LILATracts_Vehicle,0
+50005,Caledonia County,Vermont,50005957000,LILATracts_Vehicle,0
+50005,Caledonia County,Vermont,50005957400,LILATracts_Vehicle,0
+50005,Caledonia County,Vermont,50005957500,LILATracts_Vehicle,0
+50005,Caledonia County,Vermont,50005957600,LILATracts_Vehicle,0
+50005,Caledonia County,Vermont,50005957700,LILATracts_Vehicle,0
+50005,Caledonia County,Vermont,50005957300,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007002701,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007002702,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007002800,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007002900,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007003000,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007003100,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007003400,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007003304,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007003501,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007003502,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007003503,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007003600,LILATracts_Vehicle,1
+50007,Chittenden County,Vermont,50007002602,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007003301,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007002601,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007000900,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007002400,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007000100,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007000200,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007000300,LILATracts_Vehicle,1
+50007,Chittenden County,Vermont,50007000400,LILATracts_Vehicle,1
+50007,Chittenden County,Vermont,50007000500,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007000600,LILATracts_Vehicle,1
+50007,Chittenden County,Vermont,50007000800,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007004002,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007001000,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007001100,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007002101,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007002102,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007002200,LILATracts_Vehicle,1
+50007,Chittenden County,Vermont,50007002301,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007002302,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007002500,LILATracts_Vehicle,0
+50007,Chittenden County,Vermont,50007003900,LILATracts_Vehicle,0
+50009,Essex County,Vermont,50009950100,LILATracts_Vehicle,0
+50009,Essex County,Vermont,50009950200,LILATracts_Vehicle,0
+50009,Essex County,Vermont,50009950500,LILATracts_Vehicle,0
+50011,Franklin County,Vermont,50011010700,LILATracts_Vehicle,0
+50011,Franklin County,Vermont,50011010100,LILATracts_Vehicle,0
+50011,Franklin County,Vermont,50011010200,LILATracts_Vehicle,0
+50011,Franklin County,Vermont,50011010300,LILATracts_Vehicle,0
+50011,Franklin County,Vermont,50011010400,LILATracts_Vehicle,0
+50011,Franklin County,Vermont,50011010500,LILATracts_Vehicle,0
+50011,Franklin County,Vermont,50011010600,LILATracts_Vehicle,0
+50011,Franklin County,Vermont,50011011000,LILATracts_Vehicle,0
+50011,Franklin County,Vermont,50011010800,LILATracts_Vehicle,0
+50011,Franklin County,Vermont,50011010900,LILATracts_Vehicle,0
+50013,Grand Isle County,Vermont,50013020200,LILATracts_Vehicle,0
+50013,Grand Isle County,Vermont,50013020100,LILATracts_Vehicle,0
+50015,Lamoille County,Vermont,50015953000,LILATracts_Vehicle,0
+50015,Lamoille County,Vermont,50015953100,LILATracts_Vehicle,0
+50015,Lamoille County,Vermont,50015953200,LILATracts_Vehicle,0
+50015,Lamoille County,Vermont,50015953300,LILATracts_Vehicle,0
+50015,Lamoille County,Vermont,50015953400,LILATracts_Vehicle,0
+50015,Lamoille County,Vermont,50015953500,LILATracts_Vehicle,0
+50015,Lamoille County,Vermont,50015953600,LILATracts_Vehicle,0
+50017,Orange County,Vermont,50017959000,LILATracts_Vehicle,0
+50017,Orange County,Vermont,50017959101,LILATracts_Vehicle,0
+50017,Orange County,Vermont,50017959102,LILATracts_Vehicle,0
+50017,Orange County,Vermont,50017959200,LILATracts_Vehicle,0
+50017,Orange County,Vermont,50017959300,LILATracts_Vehicle,0
+50017,Orange County,Vermont,50017959400,LILATracts_Vehicle,0
+50017,Orange County,Vermont,50017959500,LILATracts_Vehicle,0
+50017,Orange County,Vermont,50017959600,LILATracts_Vehicle,0
+50017,Orange County,Vermont,50017959700,LILATracts_Vehicle,0
+50017,Orange County,Vermont,50017959800,LILATracts_Vehicle,0
+50019,Orleans County,Vermont,50019952000,LILATracts_Vehicle,0
+50019,Orleans County,Vermont,50019951100,LILATracts_Vehicle,0
+50019,Orleans County,Vermont,50019951200,LILATracts_Vehicle,0
+50019,Orleans County,Vermont,50019951400,LILATracts_Vehicle,0
+50019,Orleans County,Vermont,50019951900,LILATracts_Vehicle,0
+50019,Orleans County,Vermont,50019951600,LILATracts_Vehicle,0
+50019,Orleans County,Vermont,50019951700,LILATracts_Vehicle,0
+50019,Orleans County,Vermont,50019951800,LILATracts_Vehicle,0
+50019,Orleans County,Vermont,50019951500,LILATracts_Vehicle,1
+50019,Orleans County,Vermont,50019951300,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021963000,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021964300,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021964000,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021963800,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021963700,LILATracts_Vehicle,1
+50021,Rutland County,Vermont,50021963600,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021963500,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021963400,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021963300,LILATracts_Vehicle,1
+50021,Rutland County,Vermont,50021963200,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021963100,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021962800,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021962700,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021962600,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021962500,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021962400,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021962300,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021964200,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021962200,LILATracts_Vehicle,0
+50021,Rutland County,Vermont,50021962100,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023955600,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023955700,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023954000,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023954100,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023954200,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023954300,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023954400,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023954500,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023954600,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023954800,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023955800,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023954900,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023955000,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023955100,LILATracts_Vehicle,1
+50023,Washington County,Vermont,50023955200,LILATracts_Vehicle,1
+50023,Washington County,Vermont,50023955300,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023955400,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023955500,LILATracts_Vehicle,0
+50023,Washington County,Vermont,50023954700,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025968500,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025968400,LILATracts_Vehicle,1
+50025,Windham County,Vermont,50025968300,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025968200,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025968100,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025968000,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025967900,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025967400,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025967700,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025967600,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025967500,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025967300,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025967200,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025967100,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025967000,LILATracts_Vehicle,1
+50025,Windham County,Vermont,50025967800,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025968600,LILATracts_Vehicle,0
+50025,Windham County,Vermont,50025968700,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027965000,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027966500,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027966300,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027966200,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027966100,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027966000,LILATracts_Vehicle,1
+50027,Windsor County,Vermont,50027965900,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027965800,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027965700,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027965600,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027965502,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027965501,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027965400,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027965300,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027965200,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027965100,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027966700,LILATracts_Vehicle,0
+50027,Windsor County,Vermont,50027966600,LILATracts_Vehicle,1

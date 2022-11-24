@@ -691,7 +691,7 @@ if __name__ == '__main__':
 
 
     # run compile and write functions
-    # cdata = comp_data()
-    # save_as_xlsx()
-    # save_as_csvs()
+    cdata = comp_data() # zella note: un-commenting out
+    save_as_xlsx(cdata = cdata) # zella note: un-commenting out, added argument "cdata = cdata" here
+    save_as_csvs(cdata = cdata) # zella note: un-commenting out, added argument "cdata = cdata" here
     comp_data4AGOL()

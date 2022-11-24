@@ -1271,7 +1271,10 @@ class facilities:
         import time
 
         if chrome_driver_path == None:
-            chrome_driver_path = os.getcwd() + '\\chromedriver'
+            chrome_driver_path = 'chromedriver'
+            if sys.platform.lower()[:3] == 'win':
+            	chrome_driver_path += '.exe'
+            chrome_driver_path = os.path.join(os.getcwd(), chrome_driver_path)
         try:
             if download_path:
                 chrome_options = webdriver.ChromeOptions()

@@ -12,14 +12,15 @@ import pandas as pd
 import os
 import sys
 from io import StringIO
-from CIFTools import census_sdoh as sdoh
-from CIFTools import BLS
-from CIFTools import food_desert
-from CIFTools import fcc
-from CIFTools import facilities
-from CIFTools import water_violation
-from CIFTools import scp_cancer_data
-from CIFTools import places_data
+# CIFTools updated to z_annotated_ciftools below for testing
+from z_annotated_ciftools import census_sdoh as sdoh
+from z_annotated_ciftools import BLS
+from z_annotated_ciftools import food_desert
+from z_annotated_ciftools import fcc
+from z_annotated_ciftools import facilities
+from z_annotated_ciftools import water_violation
+from z_annotated_ciftools import scp_cancer_data
+from z_annotated_ciftools import places_data
 import argparse
 import glob
 import pickle
@@ -41,9 +42,9 @@ if __name__ == '__main__':
 
     """
     Example of parser:
-    python CIF_pull_data.py --input_folder ./input_folder --ca_name Dartmouth -i no
+    python CIF_pull_data.py --input_folder ./input_folder --ca_name Dartmouth_xlsx_test_nov_22 --ca_file_type 'xlsx' -i no
     OR
-    python z_annotated_cifpull.py --input_folder ./input_folder --ca_name Dartmouth_xlxs_test -i no
+    python z_annotated_cifpull.py --input_folder ./input_folder --ca_name Dartmouth_xlsx_test_nov_22 --ca_file_type xlsx -i no
     """
     ## INTERPRETATION OF CODE ABOVE
     # then args.input_folder = "./input_folder"
@@ -68,6 +69,7 @@ if __name__ == '__main__':
     else:
         input_path = args.input_folder
         # find a csv file in the input_folder
+        print(os.path.join(input_path, f'*.{args.ca_file_type}')) # zella note: for testing only
         ca_file = glob.glob(os.path.join(input_path, f'*.{args.ca_file_type}'))[0]
         chromedriver_name = 'chromedriver'
         if sys.platform.lower()[:3] == 'win':
@@ -610,7 +612,7 @@ if __name__ == '__main__':
             # ZELLA NOTE: seems like around here that we should edit to create csv and excel files as well
 
     ### write data to Excel
-    def save_as_xlsx(cdata:dict) -> None: # Zella note: TypeError: save_as_xlsx() missing 1 required positional argument: 'cdata'
+    def save_as_xlsx(cdata:dict) -> None:
         from pandas import ExcelWriter
         from datetime import datetime as dt
 
@@ -699,8 +701,7 @@ if __name__ == '__main__':
 
 
     # run compile and write functions
-    cdata = comp_data() # Zella note: un-commenting-out since it seems necessary--code still isn't running
-    # save_as_xlsx() # Zella note: un-commenting-out this for testing
-    # Zella note: getting this error: TypeError: save_as_xlsx() missing 1 required positional argument: 'cdata'
-    save_as_csvs() # Zella note: TypeError: save_as_csvs() missing 1 required positional argument: 'cdata'
+    cdata = comp_data()
+    # save_as_xlsx(cdata = cdata) # Zella note: un-commenting-out this for testing
+    save_as_csvs(cdata = cdata)
     comp_data4AGOL()

@@ -1271,7 +1271,10 @@ class facilities:
         import time
 
         if chrome_driver_path == None:
-            chrome_driver_path = os.getcwd() + '\\chromedriver'
+            chrome_driver_path = 'chromedriver'
+            if sys.platform.lower()[:3] == 'win':
+            	chrome_driver_path += '.exe'
+            chrome_driver_path = os.path.join(os.getcwd() , 'input_folder', chrome_driver_path) # zella note: 'input_folder' added for testing
         try:
             if download_path:
                 chrome_options = webdriver.ChromeOptions()
@@ -1323,8 +1326,8 @@ class facilities:
                 if remove_download:
                     os.remove(f'{download_path}/ACRLCSDownload.csv')
         except:
-            print(f'please locate the chrome driver file in {chrome_driver_path}')
-            print('you can download the driver file from https://sites.google.com/chromium.org/driver/')
+            print(f'please locate the chrome driver file in {chrome_driver_path} (TEST 2)') # Zella note: adding test text to distinguish
+            print('you can download the driver file from https://sites.google.com/chromium.org/driver/ (TEST 2)') # Zella note: adding test text to distinguish
 
 
 
@@ -1356,7 +1359,7 @@ class BLS:
         df['FIPS'] = df['State']+df['County']
         df['Period'] = df.Period.str.strip()
         if most_recent:
-            # df = df.loc[df.Period.str.match(re.compile('.*p\)$'))] # ISSUE: GIVING AN ERROR
+            # df = df.loc[df.Period.str.match(re.compile('.*p\)$'))] # zella note: GIVING AN ERROR
             # ## ERROR: ValueError: Cannot mask with non-boolean array containing NA / NaN values
             # df['Period'] = [x[:-3] for x in df.Period]
             #### ZELLA CHANGE (commented-out lines were giving errors) ####
@@ -1430,7 +1433,7 @@ class fcc:
         self.data_url = soup.find_all(href=re.compile(state))[-1]['href']
         self.download_data(state2 = state, chrome_driver_path = chrome_driver_path, download_path = download_path)
         self.gen_df()
-        if remove_download:
+        if remove_download: # zella note: commented out for testing
             os.remove(self.file_path)
 
 
@@ -1443,15 +1446,16 @@ class fcc:
         from selenium.webdriver.common.by import By
 
         if chrome_driver_path == None:
-            chrome_driver_path = os.getcwd() + '\\chromedriver'
+            chrome_driver_path = 'chromedriver'
             if sys.platform.lower()[:3] == 'win':
             	chrome_driver_path += '.exe'
+            chrome_driver_path = os.path.join(os.getcwd() , 'input_folder', chrome_driver_path) # zella note: added 'input_folder' for testing only, since it seems like otherwise it might not look in the right place?
         try:
-            driver = webdriver.Chrome(chrome_driver_path)
+            driver = webdriver.Chrome(chrome_driver_path) # Zella note: seems like this line may be causing errors
             driver.close()
         except:
-            print(f'please locate the chrome driver file in {chrome_driver_path}')
-            print('you can download the driver file from https://sites.google.com/chromium.org/driver/')
+            print(f'please locate the chrome driver file in {chrome_driver_path} (TEST 1)') # Zella note: adding test text to distinguish NOTE: this is being triggered
+            print('you can download the driver file from https://sites.google.com/chromium.org/driver/ (TEST 1)')  # Zella note: adding test text to distinguish
         else:
             if download_path:
                 chrome_options = webdriver.ChromeOptions()
