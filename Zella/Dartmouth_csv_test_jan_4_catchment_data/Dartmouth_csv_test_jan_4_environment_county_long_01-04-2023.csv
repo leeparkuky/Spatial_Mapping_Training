@@ -1,0 +1,49 @@
+FIPS,County,State,measure,value
+33001,Belknap County,New Hampshire,PWS_Violations_Since_2016,26.0
+33003,Carroll County,New Hampshire,PWS_Violations_Since_2016,8.0
+33005,Cheshire County,New Hampshire,PWS_Violations_Since_2016,2.0
+33007,Coos County,New Hampshire,PWS_Violations_Since_2016,3.0
+33009,Grafton County,New Hampshire,PWS_Violations_Since_2016,22.0
+33011,Hillsborough County,New Hampshire,PWS_Violations_Since_2016,9.0
+33013,Merrimack County,New Hampshire,PWS_Violations_Since_2016,10.0
+33015,Rockingham County,New Hampshire,PWS_Violations_Since_2016,15.0
+33017,Strafford County,New Hampshire,PWS_Violations_Since_2016,10.0
+33019,Sullivan County,New Hampshire,PWS_Violations_Since_2016,8.0
+50001,Addison County,Vermont,PWS_Violations_Since_2016,1.0
+50003,Bennington County,Vermont,PWS_Violations_Since_2016,2.0
+50005,Caledonia County,Vermont,PWS_Violations_Since_2016,2.0
+50007,Chittenden County,Vermont,PWS_Violations_Since_2016,2.0
+50009,Essex County,Vermont,PWS_Violations_Since_2016,0.0
+50011,Franklin County,Vermont,PWS_Violations_Since_2016,2.0
+50013,Grand Isle County,Vermont,PWS_Violations_Since_2016,8.0
+50015,Lamoille County,Vermont,PWS_Violations_Since_2016,3.0
+50017,Orange County,Vermont,PWS_Violations_Since_2016,1.0
+50019,Orleans County,Vermont,PWS_Violations_Since_2016,1.0
+50021,Rutland County,Vermont,PWS_Violations_Since_2016,14.0
+50023,Washington County,Vermont,PWS_Violations_Since_2016,4.0
+50025,Windham County,Vermont,PWS_Violations_Since_2016,3.0
+50027,Windsor County,Vermont,PWS_Violations_Since_2016,19.0
+33001,Belknap County,New Hampshire,LILATracts_Vehicle,0.0
+33003,Carroll County,New Hampshire,LILATracts_Vehicle,0.32158464753942617
+33005,Cheshire County,New Hampshire,LILATracts_Vehicle,0.07638061183949146
+33007,Coos County,New Hampshire,LILATracts_Vehicle,0.2127584503563616
+33009,Grafton County,New Hampshire,LILATracts_Vehicle,0.12854999166342468
+33011,Hillsborough County,New Hampshire,LILATracts_Vehicle,0.09774484453192338
+33013,Merrimack County,New Hampshire,LILATracts_Vehicle,0.09509541081848288
+33015,Rockingham County,New Hampshire,LILATracts_Vehicle,0.06701555205897439
+33017,Strafford County,New Hampshire,LILATracts_Vehicle,0.24284501061571126
+33019,Sullivan County,New Hampshire,LILATracts_Vehicle,0.4593401743352091
+50001,Addison County,Vermont,LILATracts_Vehicle,0.0
+50003,Bennington County,Vermont,LILATracts_Vehicle,0.14938590820943762
+50005,Caledonia County,Vermont,LILATracts_Vehicle,0.0
+50007,Chittenden County,Vermont,LILATracts_Vehicle,0.1572290423277856
+50009,Essex County,Vermont,LILATracts_Vehicle,0.0
+50011,Franklin County,Vermont,LILATracts_Vehicle,0.0
+50013,Grand Isle County,Vermont,LILATracts_Vehicle,0.0
+50015,Lamoille County,Vermont,LILATracts_Vehicle,0.0
+50017,Orange County,Vermont,LILATracts_Vehicle,0.0
+50019,Orleans County,Vermont,LILATracts_Vehicle,0.10035335689045936
+50021,Rutland County,Vermont,LILATracts_Vehicle,0.13735375615763548
+50023,Washington County,Vermont,LILATracts_Vehicle,0.16530147440763976
+50025,Windham County,Vermont,LILATracts_Vehicle,0.16386728875064802
+50027,Windsor County,Vermont,LILATracts_Vehicle,0.14826485678503615

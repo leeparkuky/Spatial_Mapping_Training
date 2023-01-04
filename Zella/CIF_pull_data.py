@@ -38,6 +38,8 @@ if __name__ == '__main__':
     parser.add_argument("-o", "--output_folder", type=str, default= None)
     parser.add_argument("-t", "--ca_file_type", type=str, default='csv')
     parser.add_argument("-i", "--interactive", type = str, default = 'yes')
+	# zella note: need an output file type argument and an if/else statement to output csv/excel based on input type
+    parser.add_argument("-s", "--output_type", type = str, default = 'csv')
 
     """
     Example of parser:
@@ -691,7 +693,11 @@ if __name__ == '__main__':
 
 
     # run compile and write functions
-    cdata = comp_data() # zella note: un-commenting out
-    save_as_xlsx(cdata = cdata) # zella note: un-commenting out, added argument "cdata = cdata" here
-    save_as_csvs(cdata = cdata) # zella note: un-commenting out, added argument "cdata = cdata" here
-    comp_data4AGOL()
+	# zella note: adding if statements
+    cdata = comp_data()
+    if args.output_type.lower() == 'xlsx': 
+        save_as_xlsx(cdata = cdata)
+    elif args.output_type.lower() == 'pickle': 
+        comp_data4AGOL()
+    else: 
+        save_as_csvs(cdata = cdata)

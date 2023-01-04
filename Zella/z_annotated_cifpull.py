@@ -37,14 +37,16 @@ if __name__ == '__main__':
     parser.add_argument("-f", "--input_folder", type=str, default = os.getcwd())
     parser.add_argument("-c", "--ca_name", type = str, default = None)
     parser.add_argument("-o", "--output_folder", type=str, default= None)
-    parser.add_argument("-t", "--ca_file_type", type=str, default='csv')
+    parser.add_argument("-t", "--ca_file_type", type=str, default='csv') # should always match input file type
     parser.add_argument("-i", "--interactive", type = str, default = 'yes')
+    # zella note: need an output file type argument and an if/else statement to output csv/excel based on input type
+    parser.add_argument("-s", "--output_type", type = str, default = 'csv')
 
     """
     Example of parser:
-    python CIF_pull_data.py --input_folder ./input_folder --ca_name Dartmouth_xlsx_test_nov_22 --ca_file_type 'xlsx' -i no
+    python CIF_pull_data.py --input_folder ./input_folder --ca_name Dartmouth_pickle_real_test_jan_4 --ca_file_type csv -i no --output_type pickle
     OR
-    python z_annotated_cifpull.py --input_folder ./input_folder --ca_name Dartmouth_xlsx_test_nov_22 --ca_file_type xlsx -i no
+    python z_annotated_cifpull.py --input_folder ./input_folder --ca_name Dartmouth_xlsx_test_dec_18 --ca_file_type csv -i no --output_type csv
     """
     ## INTERPRETATION OF CODE ABOVE
     # then args.input_folder = "./input_folder"
@@ -66,11 +68,12 @@ if __name__ == '__main__':
         if os.path.exists(path2) == False:
             os.makedirs(path2)
 
+
     else:
         input_path = args.input_folder
         # find a csv file in the input_folder
         print(os.path.join(input_path, f'*.{args.ca_file_type}')) # zella note: for testing only
-        ca_file = glob.glob(os.path.join(input_path, f'*.{args.ca_file_type}'))[0]
+        ca_file = glob.glob(os.path.join(input_path, f'*.{args.ca_file_type}'))[0] # zella note: issues here
         chromedriver_name = 'chromedriver'
         if sys.platform.lower()[:3] == 'win':
         	chromedriver_name += '.exe'
@@ -609,10 +612,8 @@ if __name__ == '__main__':
         with open(os.path.join(path2,'dataset.pickle'), 'wb') as dataset:
             pickle.dump(cdata, dataset, protocol=pickle.HIGHEST_PROTOCOL)
 
-            # ZELLA NOTE: seems like around here that we should edit to create csv and excel files as well
-
     ### write data to Excel
-    def save_as_xlsx(cdata:dict) -> None:
+    def save_as_xlsx(cdata:dict) -> None: 
         from pandas import ExcelWriter
         from datetime import datetime as dt
 
@@ -624,9 +625,7 @@ if __name__ == '__main__':
 
         with ExcelWriter(full_path, mode = 'w') as writer:
             print('Writing data to file...')
-            pd.read_csv('CIFTools_Documentation.csv',
-                        header = None, encoding = "ISO-8859-1").to_excel(writer, header = None,  #Zella note: why are we using this encoding?
-                                                                         sheet_name = 'Variables and Sources', index = False)
+            pd.read_csv('CIFTools_Documentation.csv', header = None, encoding = "ISO-8859-1").to_excel(writer, header = None, sheet_name = 'Variables and Sources', index = False) # zella note: getting an error here
             cdata['cancer_incidence'].to_excel(writer, sheet_name = 'Cancer Incidence', index = True)
             cdata['cancer_mortality'].to_excel(writer, sheet_name = 'Cancer Mortality', index = True)
             cdata['economy_county'].to_excel(writer, sheet_name = 'Economy (County)', index = False)
@@ -644,9 +643,7 @@ if __name__ == '__main__':
 
         with ExcelWriter(full_path2, mode = 'w') as writer:
             print('Writing data to file...')
-            pd.read_csv('CIFTools_Documentation.csv',
-                        header = None, encoding = "ISO-8859-1").to_excel(writer, header = None,
-                                                                         sheet_name = 'Variables and Sources', index = False)
+            pd.read_csv('CIFTools_Documentation.csv', header = None, encoding = "ISO-8859-1").to_excel(writer, header = None, sheet_name = 'Variables and Sources', index = False) # zella note: getting an error here?
             cdata['cancer_incidence_long'].to_excel(writer, sheet_name = 'Cancer Incidence', index = True)
             cdata['cancer_mortality_long'].to_excel(writer, sheet_name = 'Cancer Mortality', index = True)
             cdata['economy_county_long'].to_excel(writer, sheet_name = 'Economy (County)', index = False)
@@ -702,6 +699,10 @@ if __name__ == '__main__':
 
     # run compile and write functions
     cdata = comp_data()
-    # save_as_xlsx(cdata = cdata) # Zella note: un-commenting-out this for testing
-    save_as_csvs(cdata = cdata)
-    comp_data4AGOL()
+    if args.output_type.lower() == 'xlsx': # zella note: adding if statements
+        print(type(cdata['cancer_incidence'])) # zella note: added for testing
+        save_as_xlsx(cdata = cdata) # zella note: IndexError: At least one sheet must be visible
+    elif args.output_type.lower() == 'pickle': # zella note: adding if statements
+        comp_data4AGOL()
+    else: # zella note: adding if statements (not specifying csv here to make this the default)
+        save_as_csvs(cdata = cdata)

@@ -19,6 +19,7 @@ from io import BytesIO
 from zipfile import ZipFile
 import urllib.request
 import glob
+import sys # zella note: adding this because it seems needed
 
 pd.set_option('display.max_colwidth', 0)
 
@@ -1446,16 +1447,18 @@ class fcc:
         from selenium.webdriver.common.by import By
 
         if chrome_driver_path == None:
-            chrome_driver_path = 'chromedriver'
+            chrome_driver_path = 'chromedriver' # zella note: seems like chromedriver can cause a lot of issues: won't work if it's not installed, won't work if the wrong version of chromedriver is installed
             if sys.platform.lower()[:3] == 'win':
             	chrome_driver_path += '.exe'
             chrome_driver_path = os.path.join(os.getcwd() , 'input_folder', chrome_driver_path) # zella note: added 'input_folder' for testing only, since it seems like otherwise it might not look in the right place?
         try:
             driver = webdriver.Chrome(chrome_driver_path) # Zella note: seems like this line may be causing errors
             driver.close()
-        except:
+        # except: # zella note: commented out this line
+        except Exception as e: # zella note: added this line
             print(f'please locate the chrome driver file in {chrome_driver_path} (TEST 1)') # Zella note: adding test text to distinguish NOTE: this is being triggered
             print('you can download the driver file from https://sites.google.com/chromium.org/driver/ (TEST 1)')  # Zella note: adding test text to distinguish
+            print(e) # zella note: adding to try to identify errors
         else:
             if download_path:
                 chrome_options = webdriver.ChromeOptions()
